@@ -1,4 +1,5 @@
-﻿@model CreateGameFormViewModel
+﻿@using GameZone.Settings
+@model CreateGameFormViewModel
 
 @{
     ViewData["Title"] = "Add Game";
@@ -43,7 +44,7 @@
             <div class="form-group">
                 <label asp-for="Cover" class="form-label mt-4"></label>
                 <input type="file" class="form-control" asp-for="Cover" />
-                <small class="form-text text-muted d-block">Only .jpg, .jpeg, .png are allowed with max size 1MB.</small>
+                <small class="form-text text-muted d-block">Only @FileSettings.ImageAllowedExtensions are allowed with max size @(FileSettings.ImageMaxAllowedSizeInMB)MB.</small>
                 <span asp-validation-for="Cover" class="text-danger"></span>
             </div>
 

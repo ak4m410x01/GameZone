@@ -6,6 +6,7 @@
         public const string GamesImagesPath = $"{ImagesPath}/games";
         public const string ImageAllowedExtensions = ".jpg,.jpeg,.png";
         public const int ImageMaxAllowedSizeInBytes = 1_048_576;
+        public const int ImageMaxAllowedSizeInMB = ImageMaxAllowedSizeInBytes / 1024 / 1024;
 
     }
 }
