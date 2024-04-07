@@ -19,6 +19,10 @@ namespace GameZone.Services.Implementations
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly string _imagesPath;
 
+        public async Task<IQueryable<Game>> GetAllAsync()
+        {
+            return await Task.FromResult(_context.Games.AsQueryable());
+        }
         public async Task CreateAsync(CreateGameFormViewModel model)
         {
             string coverName = $"{Guid.NewGuid()}_{model.Name}{Path.GetExtension(model.Cover.FileName)}";
@@ -39,6 +43,9 @@ namespace GameZone.Services.Implementations
             await _context.Games.AddAsync(game);
             await _context.SaveChangesAsync();
         }
-
+        public async Task<Game?> GetByIdAsync(int id)
+        {
+            return await _context.Games.FindAsync(id);
+        }
     }
 }
