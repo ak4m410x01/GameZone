@@ -1,8 +1,6 @@
-﻿using GameZone.Data;
-using GameZone.Services.Interfaces;
+﻿using GameZone.Services.Interfaces;
 using GameZone.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace GameZone.Controllers
 {

@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using GameZone.Attributes;
+using GameZone.Settings;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 
 namespace GameZone.ViewModels
@@ -19,6 +21,7 @@ namespace GameZone.ViewModels
         [MaxLength(2500)]
         public string Description { get; set; } = string.Empty;
 
+        [AllowedExtensions(FileSettings.ImageAllowedExtensions)]
         public IFormFile Cover { get; set; } = default!;
     }
 }
