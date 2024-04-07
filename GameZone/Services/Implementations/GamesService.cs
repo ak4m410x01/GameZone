@@ -3,6 +3,7 @@ using GameZone.Models;
 using GameZone.Services.Interfaces;
 using GameZone.Settings;
 using GameZone.ViewModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace GameZone.Services.Implementations
 {
@@ -21,7 +22,13 @@ namespace GameZone.Services.Implementations
 
         public async Task<IQueryable<Game>> GetAllAsync()
         {
-            return await Task.FromResult(_context.Games.AsQueryable());
+            return await Task
+                .FromResult(
+                    _context.Games
+                        .Include(g => g.Category)
+                        .Include(g => g.Devices)
+                        .ThenInclude(d => d.Device)
+                        .AsQueryable());
         }
         public async Task CreateAsync(CreateGameFormViewModel model)
         {
